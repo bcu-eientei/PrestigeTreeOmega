@@ -125,7 +125,7 @@ Multiplies point gain by "+ format(data.effect) +"x."
          },
          effect(x) { // Effects of owning x of the items, x is a decimal
              let base = new Decimal(0.25)
-             let effect = base.mul(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels[this.id]))
+             let effect = base.mul(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels))
              return effect.add(1)
          },
          display() { // Everything else displayed in the buyable button after the title
@@ -162,7 +162,7 @@ Multiplies prestige point gain by "+ format(data.effect) +"x."
          },
          effect(x) { // Effects of owning x of the items, x is a decimal
              let base = new Decimal(1.1)
-             let effect = base.pow(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels[this.id]))
+             let effect = base.pow(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels))
              return effect
          },
          display() { // Everything else displayed in the buyable button after the title
@@ -199,7 +199,7 @@ Multiplies prestige point gain by "+ format(data.effect) +"x."
          },
          effect(x) { // Effects of owning x of the items, x is a decimal
              let base = new Decimal(1.04)
-             let effect = base.pow(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels[this.id]))
+             let effect = base.pow(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels))
              return effect
          },
          display() { // Everything else displayed in the buyable button after the title
