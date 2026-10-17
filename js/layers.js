@@ -991,7 +991,7 @@ The levels of these upgrades do not drop below that value on higher resets."
              },
              unlocked() { return player[this.layer].boosterCount >= 5 },
          effect(x) { // Effects of owning x of the items, x is a decimal
-             let effect = new Decimal(10).pow(x)
+             let effect = new Decimal(2).pow(x)
              return effect
          },
          display() { // Everything else displayed in the buyable button after the title
