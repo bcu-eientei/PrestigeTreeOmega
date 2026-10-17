@@ -1089,7 +1089,7 @@ Generators run "+format(data.effect) +"x faster."
          33: {
              title: "Hyper Booster", // Optional, displayed at the top in a larger font
          cost(x) { // cost for buying xth buyable, can be an object if there are multiple currencies
-             let cost = Decimal.pow(10, player[this.layer].buyables[this.id]).mul(5000)
+             let cost = Decimal.pow(100, player[this.layer].buyables[this.id]).mul(5000)
              if (!(player.b.unlockOrder&&!player.b.unlockedTime)) cost = cost.mul(1e6)
                  return cost
          },
