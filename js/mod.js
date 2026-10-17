@@ -12,11 +12,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1",
+	num: "0.1.1",
 	name: "Literally nothing",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+	<h2>v0.1.1</h3><br>
+		- Shot booster/generator power reset scaling dead in Detroit in an attempt to limit their snowball effect.<br>
 	<h3>v0.1</h3><br>
 		- Added stuff.<br>
 		- Three layers i guess.`

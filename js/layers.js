@@ -375,7 +375,7 @@ addLayer("g", {
         return new Decimal(1e6).times((player.g.unlockOrder&&!player.g.unlockedTime)?1e6:1)
     },
     increaseUnlockOrder: ["b"],
-    exponent: 1.1, // Prestige currency exponent
+    exponent: 0.875, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         mult = mult.times(buyableEffect("b", 31))
@@ -780,7 +780,7 @@ addLayer("b", {
     },
     increaseUnlockOrder: ["g"],
     exponent() {
-        return new Decimal(0.65).add((player.b.unlockOrder&&!player.b.unlockedTime)?0.175:0)
+        return new Decimal(0.65)
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
