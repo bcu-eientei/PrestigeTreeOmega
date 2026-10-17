@@ -546,7 +546,7 @@ Generates "+ format(data.effect) +" Prestige Generator IIs per second."
              21: {
                  title: "Generator Generator I", // Optional, displayed at the top in a larger font
                  cost(x) { // cost for buying xth buyable, can be an object if there are multiple currencies
-                     let cost = Decimal.pow(1.2, x).mul(5)
+                     let cost = Decimal.pow(1.5, x).mul(5)
                      return cost
                  },
                  unlocked() { return player[this.layer].unlocked },
@@ -653,7 +653,7 @@ Generates "+ format(data.effect) +" Generator Generator IIs per second."
              31: {
                  title: "Booster Generator I", // Optional, displayed at the top in a larger font
                  cost(x) { // cost for buying xth buyable, can be an object if there are multiple currencies
-                     let cost = Decimal.pow(1.2, x).mul(10)
+                     let cost = Decimal.pow(1.5, x).mul(10)
                      if (!(player.g.unlockOrder&&!player.g.unlockedTime)) cost = cost.mul(1e6)
                      return cost
                  },
@@ -737,7 +737,7 @@ Generates "+ format(data.effect) +" Booster Generator Is per second."
              return level
          },
          effect(x) { // Effects of owning x of the items, x is a decimal
-             let base = new Decimal(0.0001)
+             let base = new Decimal(0.000001)
              let effect = base.mul(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels))
              effect = effect.mul(tmp[this.layer].generatorGlobalBoost)
              return effect
@@ -1093,7 +1093,7 @@ Generators run "+format(data.effect) +"x faster."
              if (!(player.b.unlockOrder&&!player.b.unlockedTime)) cost = cost.mul(1e6)
                  return cost
          },
-         unlocked() { return player[this.layer].gBoosterCount >= 1 },
+         unlocked() { return player[this.layer].gBoosterCount >= 2 },
          effect(x) { // Effects of owning x of the items, x is a decimal
              let base = new Decimal(1.05)
              let effect = base.pow(x)
