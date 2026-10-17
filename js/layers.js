@@ -737,7 +737,7 @@ Generates "+ format(data.effect) +" Booster Generator Is per second."
              return level
          },
          effect(x) { // Effects of owning x of the items, x is a decimal
-             let base = new Decimal(0.000001)
+             let base = new Decimal(0.0001)
              let effect = base.mul(x.add(tmp[this.layer].buyables[this.id].freeBuyableLevels))
              effect = effect.mul(tmp[this.layer].generatorGlobalBoost)
              return effect
