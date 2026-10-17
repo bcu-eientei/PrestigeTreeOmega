@@ -12,11 +12,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1.1",
+	num: "0.1.2",
 	name: "Literally nothing",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+	<h2>v0.1.2</h3><br>
+		- Tried to hotpatch the runaway effect with some nerfs
 	<h2>v0.1.1</h3><br>
 		- Shot booster/generator power reset scaling dead in Detroit in an attempt to limit their snowball effect.<br>
 	<h3>v0.1</h3><br>
@@ -49,6 +51,7 @@ function getPointGen() {
 	gain = gain.times(buyableEffect("p", 11))
 	gain = gain.times(buyableEffect("p", 21))
 	gain = gain.times(buyableEffect("b", 11))
+	gain = gain.times(buyableEffect("b", 33))
 	if (hasUpgrade("p", 13)) gain = gain.mul(2)
 	if (hasUpgrade("p", 15)) gain = gain.mul(1.5)
 	if (hasUpgrade("p", 25)) gain = gain.mul(1.5)

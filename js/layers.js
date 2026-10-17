@@ -24,6 +24,7 @@ addLayer("p", {
         mult = mult.times(buyableEffect("p", 12))
         mult = mult.times(buyableEffect("p", 22))
         mult = mult.times(buyableEffect("b", 12))
+        mult = mult.times(buyableEffect("b", 33))
         if (hasUpgrade("p", 22)) mult = mult.mul(upgradeEffect("p", 22))
         return mult
     },
@@ -379,6 +380,7 @@ addLayer("g", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         mult = mult.times(buyableEffect("b", 31))
+        mult = mult.times(buyableEffect("b", 33))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -785,11 +787,11 @@ addLayer("b", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         mult = mult.times(buyableEffect("b", 13))
+        mult = mult.times(buyableEffect("b", 33))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         exp = new Decimal(1)
-        exp = exp.add(buyableEffect("b", 33).div(100))
         return exp
     },
     resource: "booster power", // Name of prestige currency
@@ -1052,13 +1054,13 @@ Multiplies generator power gain by "+format(data.effect) +"x."
          32: {
              title: "Meta-Generator Booster", // Optional, displayed at the top in a larger font
          cost(x) { // cost for buying xth buyable, can be an object if there are multiple currencies
-             let cost = Decimal.pow(15, player[this.layer].buyables[this.id]).mul(250)
+             let cost = Decimal.pow(50, player[this.layer].buyables[this.id]).mul(250)
              if (!(player.b.unlockOrder&&!player.b.unlockedTime)) cost = cost.mul(1000)
                  return cost
          },
          unlocked() { return player[this.layer].gBoosterCount >= 1 },
          effect(x) { // Effects of owning x of the items, x is a decimal
-             let base = new Decimal(1.1)
+             let base = new Decimal(1.05)
              let effect = base.pow(x)
              return effect
          },
@@ -1085,7 +1087,7 @@ Generators run "+format(data.effect) +"x faster."
          style: {'height':'120px', 'width':'160px'},
          },
          33: {
-             title: "Ease Booster", // Optional, displayed at the top in a larger font
+             title: "Hyper Booster", // Optional, displayed at the top in a larger font
          cost(x) { // cost for buying xth buyable, can be an object if there are multiple currencies
              let cost = Decimal.pow(10, player[this.layer].buyables[this.id]).mul(5000)
              if (!(player.b.unlockOrder&&!player.b.unlockedTime)) cost = cost.mul(1e6)
@@ -1093,8 +1095,8 @@ Generators run "+format(data.effect) +"x faster."
          },
          unlocked() { return player[this.layer].gBoosterCount >= 1 },
          effect(x) { // Effects of owning x of the items, x is a decimal
-             let base = new Decimal(0.1)
-             let effect = base.mul(x)
+             let base = new Decimal(1.05)
+             let effect = base.pow(x)
              return effect
          },
          display() { // Everything else displayed in the buyable button after the title
@@ -1105,7 +1107,7 @@ Cost: " + formatWhole(data.cost) + " booster power"
              }
              return "Cost: " + formatWhole(data.cost) + " booster power\n\
 Tier: " + player[this.layer].buyables[this.id] + " / 200\n\
-    Booster energy is "+format(data.effect) +"% easier to get (max 20%)."
+Multiplies point, prestige point, generator power, and booster power gain by "+ format(data.effect) +"x."
          },
          canAfford() {
              return player[this.layer].points.gte(tmp[this.layer].buyables[this.id].cost)},
